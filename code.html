@@ -3,251 +3,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🏙️ Estatuto da Cidade - Slide Apresentação</title>
+    <title>🏛️ Estatuto da Cidade - Apresentação Detalhada</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #8B5CF6, #EC4899, #F97316);
-            color: white;
+            background: #000000;
+            color: #D4AF37;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            height: 100vh;
             overflow: hidden;
         }
-        .slide-container {
-            width: 100vw;
-            height: 100vh;
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+        .nav-panel {
+            width: 250px;
+            background: rgba(0, 0, 0, 0.9);
+            border-right: 2px solid #D4AF37;
             padding: 20px;
             box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            animation: fadeIn 1s ease-in;
+            overflow-y: auto;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        .header {
+        .nav-panel h2 {
+            color: #FFD700;
+            font-size: 1.2em;
+            margin-bottom: 20px;
             text-align: center;
-            animation: slideDown 0.8s ease-out;
         }
-        @keyframes slideDown {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        .section-btn {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid #D4AF37;
+            color: #D4AF37;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            font-size: 0.9em;
         }
-        .header h1 {
-            font-size: 4em;
+        .section-btn:hover, .section-btn.active {
+            background: #D4AF37;
+            color: #000000;
+            transform: scale(1.02);
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        .control-btn {
+            width: 100%;
+            padding: 12px;
+            margin: 5px 0;
+            border: 1px solid #D4AF37;
+            background: transparent;
+            color: #D4AF37;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
             font-weight: bold;
-            background: linear-gradient(to right, #FCD34D, #F97316);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin: 0;
-            animation: pulse 2s infinite;
         }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
+        .control-btn:hover {
+            background: #D4AF37;
+            color: #000000;
         }
-        .header p {
-            font-size: 1.5em;
-            margin: 10px 0;
-            opacity: 0.9;
+        .control-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
         .main-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
             flex: 1;
-            animation: slideUp 1s ease-out 0.5s both;
+            padding: 40px;
+            overflow-y: auto;
+            background: rgba(0, 0, 0, 0.3);
         }
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        .section {
+            display: none;
+            animation: fadeInSlide 0.8s ease-out;
         }
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            animation: cardFade 0.5s ease-out forwards;
-            opacity: 0;
+        .section.active {
+            display: block;
         }
-        .card:nth-child(1) { animation-delay: 0.2s; }
-        .card:nth-child(2) { animation-delay: 0.4s; }
-        .card:nth-child(3) { animation-delay: 0.6s; }
-        .card:nth-child(4) { animation-delay: 0.8s; }
-        .card:nth-child(5) { animation-delay: 1s; }
-        .card:nth-child(6) { animation-delay: 1.2s; }
-        @keyframes cardFade {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes fadeInSlide {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
         }
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
-        }
-        .card h2 {
-            font-size: 1.8em;
-            margin: 0 0 15px 0;
+        .section h1 {
+            font-size: 2.5em;
+            color: #FFD700;
             text-align: center;
-            color: #FCD34D;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #D4AF37;
+            padding-bottom: 10px;
         }
-        .card ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .card li {
-            margin: 10px 0;
+        .section p {
             font-size: 1.1em;
-            padding: 8px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            transition: background 0.3s;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: justify;
         }
-        .card li:hover {
-            background: rgba(252, 211, 77, 0.2);
+        .section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .section li {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid #D4AF37;
+            transition: transform 0.3s;
+            animation: bulletIn 0.5s ease-out forwards;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        .section li:nth-child(1) { animation-delay: 0.2s; }
+        .section li:nth-child(2) { animation-delay: 0.4s; }
+        .section li:nth-child(3) { animation-delay: 0.6s; }
+        .section li:nth-child(4) { animation-delay: 0.8s; }
+        @keyframes bulletIn {
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .section li:hover {
+            transform: translateX(5px);
+            background: rgba(212, 175, 55, 0.2);
+        }
+        .highlight {
+            color: #FFD700;
+            font-weight: bold;
+            border-bottom: 1px dotted #D4AF37;
+        }
+        .example {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px solid #FFD700;
         }
         .footer {
-            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
             padding: 10px;
-            animation: slideUp 1s ease-out 1.5s both;
+            text-align: center;
+            border-top: 1px solid #D4AF37;
+            font-size: 0.9em;
         }
         .team {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin: 10px 0;
-            flex-wrap: wrap;
+            gap: 10px;
+            margin: 5px 0;
         }
         .team-member {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(to right, #FCD34D, #F97316);
+            width: 40px;
+            height: 40px;
+            background: #D4AF37;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5em;
+            color: #000000;
             font-weight: bold;
-            color: #8B5CF6;
-            transition: transform 0.3s, rotate 0.3s;
+            transition: transform 0.3s;
         }
         .team-member:hover {
-            transform: scale(1.1) rotate(5deg);
+            transform: scale(1.1);
         }
-        .footer p {
-            font-size: 1em;
-            margin: 5px 0;
-            opacity: 0.8;
-        }
-        .highlight {
-            color: #FCD34D;
-            font-weight: bold;
-        }
-        /* Navegação Simples - Clique nos cards para "ativar" */
-        .card:active {
-            transform: scale(0.98);
+        .qr-link {
+            color: #D4AF37;
+            text-decoration: underline;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div class="slide-container">
-        <header class="header">
-            <h1>🏙️ ESTATUTO DA CIDADE 🏙️</h1>
-            <p>Lei Federal nº 10.257/2001 – Cidades Justas e Vibrantes!</p>
-        </header>
+    <div class="container">
+        <nav class="nav-panel">
+            <h2>📋 Menu de Seções</h2>
+            <button class="section-btn active" onclick="showSection(0)">1. Contexto Histórico</button>
+            <button class="section-btn" onclick="showSection(1)">2. Princípios Fundamentais</button>
+            <button class="section-btn" onclick="showSection(2)">3. Diretrizes da Política Urbana</button>
+            <button class="section-btn" onclick="showSection(3)">4. Plano Diretor</button>
+            <button class="section-btn" onclick="showSection(4)">5. Instrumentos Urbanísticos</button>
+            <button class="section-btn" onclick="showSection(5)">6. Gestão Democrática</button>
+            
+            <div class="controls">
+                <button class="control-btn" id="prevBtn" onclick="prevSection()" disabled>⬅️ Anterior</button>
+                <button class="control-btn" id="nextBtn" onclick="nextSection()">Próximo ➡️</button>
+                <button class="control-btn" id="playBtn" onclick="togglePlay()">▶️ Play Auto</button>
+                <p style="font-size: 0.8em; margin-top: 10px; text-align: center;">Seção: <span id="currentSection">1/6</span></p>
+            </div>
+        </nav>
 
         <main class="main-content">
-            <div class="card">
-                <h2>🏛️ Contexto Histórico e Objetivo</h2>
+            <section id="sec0" class="section active">
+                <h1>🏛️ 1. Contexto Histórico e Objetivo da Lei (Pessoa 1)</h1>
+                <p>O Estatuto da Cidade (Lei Federal nº 10.257/2001) surgiu em um momento crítico da urbanização brasileira, logo após a Constituição Federal de 1988, que introduziu o direito à cidade sustentável. Promulgada em 10 de julho de 2001, a lei representa uma resposta legislativa aos desafios crescentes das metrópoles brasileiras.</p>
                 <ul>
-                    <li>📅 Surgimento em 2001: Revolução urbana pós-Constituição 88!</li>
-                    <li>🚨 Motivação: Crescimento desordenado, desigualdade, falta de planejamento.</li>
-                    <li>🎯 Objetivo central: <span class="highlight">Função social da cidade e propriedade</span> (Art. 1º).</li>
+                    <li><strong>Surgimento em 2001:</strong> Aprovada durante o governo Lula, como complemento aos arts. 182 e 183 da CF/88, visando regulamentar a política urbana nacional. Foi um marco na democratização do espaço urbano, influenciado por movimentos sociais como o MTST.</li>
+                    <li><strong>Problemas Urbanos que Motivaram:</strong> O crescimento desordenado das cidades (ex.: favelas em expansão no Rio e São Paulo), desigualdades sociais agravadas pela especulação imobiliária, e falta de planejamento integrado, levando a problemas como enchentes, trânsito caótico e exclusão habitacional. Estudos do IBGE mostram que, nos anos 90, 80% das cidades brasileiras careciam de planos diretores.</li>
+                    <li><strong>Objetivo Central:</strong> Garantir a <span class="highlight">função social da cidade e da propriedade urbana</span> (art. 1º), promovendo o bem-estar coletivo sobre interesses individuais. Isso implica que a propriedade não é absoluta, mas deve atender à coletividade, combatendo o "efeito clube" das áreas nobres.</li>
                 </ul>
-            </div>
+                <div class="example">
+                    <strong>Exemplo Prático:</strong> Em São Paulo, o Estatuto inspirou a Lei de Zoneamento de 2016, que redistribuiu áreas para moradia popular, reduzindo desigualdades.
+                </div>
+            </section>
 
-            <div class="card">
-                <h2>⚖️ Princípios Fundamentais</h2>
+            <section id="sec1" class="section">
+                <h1>⚖️ 2. Princípios Fundamentais (Pessoa 2)</h1>
+                <p>Os princípios do Estatuto da Cidade, listados no art. 2º, formam a base ética e jurídica da política urbana, alinhados à CF/88. Eles enfatizam a responsabilidade social do Estado e dos cidadãos na construção de espaços inclusivos.</p>
                 <ul>
-                    <li>🏠 Função social da propriedade (Art. 2º, I) – Não é só ter, é usar direito!</li>
-                    <li>🏡 Direito à moradia digna (Art. 2º, II).</li>
-                    <li>🌳 Cidade sustentável e inclusiva (Art. 2º, III-VIII).</li>
+                    <li><strong>Função Social da Propriedade (Art. 2º, I):</strong> A propriedade urbana deve atender a uma função social, ou seja, ser utilizada de forma produtiva e sustentável. Propriedades ociosas podem ser taxadas ou desapropriadas, promovendo a equidade (ex.: IPTU progressivo).</li>
+                    <li><strong>Direito à Moradia (Art. 2º, II):</strong> Garante acesso a habitação digna, integrando políticas de reforma agrária urbana. Isso se conecta ao art. 6º da CF, combatendo o déficit habitacional estimado em 6 milhões de unidades (Fundação João Pinheiro).</li>
+                    <li><strong>Direito à Cidade Sustentável (Art. 2º, III-VIII):</strong> Inclui gestão democrática, equilíbrio ambiental, mobilidade urbana e preservação cultural. A sustentabilidade vai além do verde: abrange equidade social e econômica, evitando guetos segregados.</li>
                 </ul>
-            </div>
+                <div class="example">
+                    <strong>Impacto Jurídico:</strong> No STF (RE 410.715), o princípio da função social foi usado para validar desapropriações em áreas subutilizadas, reforçando o Estatuto.
+                </div>
+            </section>
 
-            <div class="card">
-                <h2>🗺️ Diretrizes da Política Urbana</h2>
+            <section id="sec2" class="section">
+                <h1>🗺️ 3. Diretrizes da Política Urbana (Pessoa 3)</h1>
+                <p>As diretrizes (art. 2º) orientam a implementação da política urbana, focando na ordenação territorial e na justiça distributiva. Elas transformam princípios abstratos em ações concretas para municípios.</p>
                 <ul>
-                    <li>📊 Ordenação do desenvolvimento social da cidade (Art. 2º).</li>
-                    <li>⚖️ Distribuição justa de benefícios e ônus da urbanização.</li>
-                    <li>💸 Combate à especulação imobiliária – Chega de abusos!</li>
+                    <li><strong>Ordenação do Pleno Desenvolvimento das Funções Sociais da Cidade:</strong> Promove o uso racional do solo, integrando habitação, trabalho e lazer. Evita a concentração de renda em centros urbanos, fomentando periferias inclusivas.</li>
+                    <li><strong>Justa Distribuição dos Benefícios e Ônus da Urbanização:</strong> Garante que os custos de infraestrutura (ex.: saneamento) sejam compartilhados, evitando que periferias subsidiem áreas ricas. Isso corrige desigualdades históricas, como no caso de Brasília.</li>
+                    <li><strong>Combate à Especulação Imobiliária:</strong> Medidas como taxação progressiva e controle de preços impedem a retenção especulativa de terras. O art. 5º veda o uso abusivo do solo, protegendo o interesse público.</li>
                 </ul>
-            </div>
+                <div class="example">
+                    <strong>Exemplo:</strong> No Recife, as diretrizes inspiraram o Plano Estratégico de Desenvolvimento, que redistribuiu Zonas Especiais de Interesse Social (ZEIS), beneficiando 50 mil famílias.
+                </div>
+            </section>
 
-            <div class="card">
-                <h2>📋 Plano Diretor</h2>
+            <section id="sec3" class="section">
+                <h1>📋 4. Plano Diretor (Pessoa 4)</h1>
+                <p>O Plano Diretor é o coração do Estatuto (arts. 40-42), servindo como instrumento normativo para a política urbana. É obrigatório e deve ser revisado a cada 10 anos, promovendo planejamento de longo prazo.</p>
                 <ul>
-                    <li>🔧 Instrumento básico da política urbana (Art. 40).</li>
-                    <li>🏙️ Obrigatório em cidades com +20 mil habitantes.</li>
-                    <li>🌱 Define uso do solo, crescimento e preservação ambiental.</li>
+                    <li><strong>Instrumento Básico da Política Urbana:</strong> Define diretrizes para o crescimento, incluindo zoneamento e programas de desenvolvimento. É hierárquico: municipal, mas alinhado ao nacional (Política Nacional de Desenvolvimento Urbano).</li>
+                    <li><strong>Obrigatoriedade:</strong> Aplicável a municípios com mais de 20 mil habitantes (art. 41). Para menores, é recomendado. Não cumprimento pode levar a sanções federais, como corte de verbas.</li>
+                    <li><strong>Conteúdo e Definições:</strong> Regula uso e ocupação do solo, expansão urbana, preservação ambiental (ex.: áreas de risco) e infraestrutura. Inclui audiências públicas para transparência.</li>
                 </ul>
-            </div>
+                <div class="example">
+                    <strong>Caso Prático:</strong> O Plano Diretor de Curitiba (2004) usou o Estatuto para criar corredores verdes, reduzindo inundações em 40% e integrando transporte sustentável.
+                </div>
+            </section>
 
-            <div class="card">
-                <h2>🛠️ Instrumentos Urbanísticos</h2>
+            <section id="sec4" class="section">
+                <h1>🛠️ 5. Instrumentos Urbanísticos Importantes (Pessoa 5)</h1>
+                <p>Os instrumentos (arts. 25-38) são ferramentas operacionais para implementar o Estatuto, equilibrando interesses privados e públicos. Eles incentivam o uso social do solo via incentivos e sanções.</p>
                 <ul>
-                    <li>🏗️ Outorga onerosa do direito de construir (Art. 35).</li>
-                    <li>💰 IPTU progressivo no tempo (Art. 7º) – Vazio = Caro!</li>
-                    <li>🔑 Usucapião especial urbano (Art. 183 CF/88).</li>
-                    <li>🤝 Direito de preempção (Art. 25).</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h2>👥 Gestão Democrática</h2>
-                <ul>
-                    <li>🗣️ Participação via conselhos, audiências e conferências (Art. 2º, VIII).</li>
-                    <li>💪 Sociedade na construção de políticas (Art. 43) – Sua voz importa!</li>
-                    <li>🏆 Ex.: Orçamento participativo em municípios como SP/RJ.</li>
-                </ul>
-            </div>
-        </main>
-
-        <footer class="footer">
-            <div class="team">
-                <div class="team-member">1</div>
-                <div class="team-member">2</div>
-                <div class="team-member">3</div>
-                <div class="team-member">4</div>
-                <div class="team-member">5</div>
-                <div class="team-member">6</div>
-            </div>
-            <p>🌟 Time de 6 Pessoas – Transformando Cidades!</p>
-            <p>Referências: Lei 10.257/2001 | CF/88 Arts. 182-183 | Apresentação Acadêmica Direito</p>
-        </footer>
-    </div>
-
-    <script>
-        // Animação simples: Clique em um card para "destacar" (simula apresentação por pessoa)
-        document.querySelectorAll('.card').forEach((card, index) => {
-            card.addEventListener('click', () => {
-                card.style.background = 'rgba(252, 211, 77, 0.3)';
-                setTimeout(() => {
-                    card.style.background = 'rgba(255, 255, 255, 0.1)';
-                }, 1000);
-                alert(`Seção ${index + 1} ativada! Apresente sua parte do Estatuto da Cidade. 😊`);
-            });
-        });
-    </script>
-</body>
-</html>
+                    <li><strong>Outorga Onerosa do Direito de Construir (Art. 35):</strong> Permite transferência de potencial construtivo excedente por pagamento, gerando recursos para habitação social. Ex.: Em áreas cent
